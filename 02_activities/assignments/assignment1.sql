@@ -33,6 +33,10 @@ filtered by vendor IDs between 8 and 10 (inclusive) using either:
 	2.  one condition using BETWEEN
 */
 -- option 1
+SELECT *,
+quantity*cost_to_customer_per_qty AS price
+FROM customer_purchases
+WHERE vendor_id >'7' AND vendor_id <'11';
 
 -- option 2
 SELECT *,
@@ -70,8 +74,8 @@ FROM product;
 vendor_id field they both have in common, and sorts the result by vendor_name, then market_date. */
 
 SELECT *
-FROM vendor_booth_assignments
-INNER JOIN vendor ON vendor.vendor_id = vendor_booth_assignments.vendor_id
+FROM vendor
+INNER JOIN vendor_booth_assignments ON vendor_booth_assignments.vendor_id = vendor.vendor_id
 ORDER BY vendor_name, market_date;
 
 
