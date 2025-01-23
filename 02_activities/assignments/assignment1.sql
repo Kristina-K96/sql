@@ -1,7 +1,6 @@
 /* ASSIGNMENT 1 */
 /* SECTION 2 */
 
-
 --SELECT
 /* 1. Write a query that returns everything in the customer table. */
 SELECT *
@@ -25,7 +24,7 @@ WHERE product_id  in ('4', '9') ;
 -- option 2
 SELECT *
 FROM customer_purchases
-WHERE product_id  = '4' AND '9' ;
+WHERE product_id  = '4' or product_id= '9' ;
 
 /*2. Write a query that returns all customer purchases and a new calculated column 'price' (quantity * cost_to_customer_per_qty), 
 filtered by vendor IDs between 8 and 10 (inclusive) using either:
@@ -53,7 +52,7 @@ if the product_qty_type is “unit,” and otherwise displays the word “bulk.�
 
 SELECT product_id, product_name,
 CASE
-	WHEN product_qty_type = 'unit' THEN 'unit'
+	WHEN product_qty_type == 'unit' THEN 'unit'
 	ELSE 'bulk'
 END AS prod_qty_type
 FROM product;
@@ -77,7 +76,6 @@ SELECT *
 FROM vendor
 INNER JOIN vendor_booth_assignments ON vendor_booth_assignments.vendor_id = vendor.vendor_id
 ORDER BY vendor_name, market_date;
-
 
 /* SECTION 3 */
 
