@@ -54,7 +54,7 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+In both version of the CUSTOMER_ADDRESS table, there would be a column for the customer_loyalty_id and customer_addresses. In a type 1 table, when the customer's new address is added it will overwrite the previous address for the cutsomer. In a type 2 table, the new customer address is added as a new row. In the type 2 table, I would include a date_added column to record when the address were added.
 ```
 
 ***
