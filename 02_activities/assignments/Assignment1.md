@@ -106,6 +106,11 @@ Please do not pick the exact same tables that I have already diagrammed. For exa
 	- <img src="./images/01_farmers_market_conceptual_model.png" width="600">
 - The column names can be found in a few spots (DB Schema window in the bottom right, the Database Structure tab in the main window by expanding each table entry, at the top of the Browse Data tab in the main window)
 
+My Answer:
+I diagrammed the relationship between the vendor and vendor_booth_assignments tables.
+
+<img src="./sql-assignment1-section1.drawio.png" width="600">
+
 ***
 
 ## Section 2:
