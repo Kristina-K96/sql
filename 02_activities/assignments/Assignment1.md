@@ -106,6 +106,11 @@ Please do not pick the exact same tables that I have already diagrammed. For exa
 	- <img src="./images/01_farmers_market_conceptual_model.png" width="600">
 - The column names can be found in a few spots (DB Schema window in the bottom right, the Database Structure tab in the main window by expanding each table entry, at the top of the Browse Data tab in the main window)
 
+My Answer:
+I diagrammed the relationship between the vendor and vendor_booth_assignments tables.
+
+<img src="./sql-assignment1-section1.drawio.png" width="600">
+
 ***
 
 ## Section 2:
@@ -206,4 +211,6 @@ Consider, for example, concepts of fariness, inequality, social structures, marg
 
 ```
 Your thoughts...
+
+The article highlights how embedding societal expectations (e.g., having only two genders, marriage, parentage for citizenship, etc.) into database designs is challenging and has real-world implications for individuals and their access to essential services and citizenship, and the ability to exercise their rights within their community. When designing a database framework, the rigidity of the data types has to be balanced with the type of information that in being in put and account for possible deviation from the status-quo or changes in the future. Furthermore, when the information input into databases are used to define a person’s identity, we have to consider what the parameters mean outside of the database and how using a certain type of input can impact someone’s access to resources. Overall, this article highlights that creating a database isn't just about the data, it's also about how the data will be used and what implications it will have on people in the real-world.
 ```
