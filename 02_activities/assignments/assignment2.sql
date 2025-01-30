@@ -129,8 +129,41 @@ HINT: There are a possibly a few ways to do this query, but if you're struggling
 3) Query the second temp table twice, once for the best day, once for the worst day, 
 with a UNION binding them. */
 
+DROP TABLE IF EXISTS market_sales;
+
+-- create TEMP TABLE for daily sales
+CREATE TEMP TABLE market_sales AS
+
+SELECT market_date
+, SUM(quantity*cost_to_customer_per_qty) AS daily_sales
+FROM customer_purchases
+GROUP BY market_date;
+
+ 
+SELECT *, 
+'max' as sale_order
+FROM(
+	SELECT *
+	,ROW_NUMBER() OVER(ORDER BY daily_sales DESC) as sale_rank
+	FROM market_sales
+	) x
+WHERE x.sale_rank = 1 
+
+UNION
+
+SELECT *,
+'min' as sale_order
+FROM(
+	SELECT *
+	,ROW_NUMBER() OVER(ORDER BY daily_sales ASC) as sale_rank
+	FROM market_sales
+	) x
+WHERE x.sale_rank = 1 
 
 
+
+
+	
 
 /* SECTION 3 */
 
