@@ -193,9 +193,5 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 ```
 Your thoughts...
 
-This article highlights the fact that all AI are built on work that is initially done by humans. The data sets used to train the algorithim likely contain the biases of the humans labelling training sets, and then these biases are trainsitioned into these models. 
-
-I think that a lot of people think that using AI/neural nets/LLM allow descions to be made more objectively, but that is not really the case. These models can't be unbiased if they are trained using data build by humans with baises.
-
-
+This article emphasizes that all AI systems are built on human labor. The datasets used to train AI models often reflect the biases of the humans who label them, and these biases are then embedded in the models themselves. Many people assume that AI, neural networks, or large language models (LLMs) make decisions more objectively than humans, but this is not necessarily true. Since these models learn from human-generated data, they inevitably inherit human biases. These inherited biases can also be mangnified by the AI, like example of the ImageNet Roulette project, and have major implications for how decisions are made in our society. Overall, this article highlights the importantance of recognizing the potential biases in training data—shaped by human decisions,and that we must actively work to reduce them because they have real-world impacts on our communities.
 ```
