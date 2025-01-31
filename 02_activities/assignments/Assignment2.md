@@ -45,16 +45,25 @@ There are several tools online you can use, I'd recommend [Draw.io](https://www.
 
 **HINT:** You do not need to create any data for this prompt. This is a conceptual model only. 
 
+My Response:
+<img src="./A2_Prompt1.jpeg" width="900">
+
 #### Prompt 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
+
+My Response:
+<img src="./A2_Prompt2.jpeg" width="900">
 
 #### Prompt 3
 The store wants to keep customer addresses. Propose two architectures for the CUSTOMER_ADDRESS table, one that will retain changes, and another that will overwrite. Which is type 1, which is type 2? 
 
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
+My Response:
+
+<img src="./A2_Prompt3.jpeg" width="900">
 ```
-In both version of the CUSTOMER_ADDRESS table, there would be a column for the customer_loyalty_id and customer_addresses. In a type 1 table, when the customer's new address is added it will overwrite the previous address for the cutsomer. In a type 2 table, the new customer address is added as a new row. In the type 2 table, I would include a date_added column to record when the address were added.
+In both version of the CUSTOMER_ADDRESS table, there would be a column for the customer_loyalty_id and customer_addresses. In a type 1 table, when the customer's new address is added it will overwrite the previous address for the cutsomer - keeping the relationship between the customer and customer_address table as a 1 to 1 relationship. In a type 2 table, the new customer address is added as a new row. In the type 2 table, the relationship between the customer and customer_address table would be a 1 to Many relationship.
 ```
 
 ***
@@ -183,4 +192,10 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 ```
 Your thoughts...
+
+This article highlights the fact that all AI are built on work that is initially done by humans. The data sets used to train the algorithim likely contain the biases of the humans labelling training sets, and then these biases are trainsitioned into these models. 
+
+I think that a lot of people think that using AI/neural nets/LLM allow descions to be made more objectively, but that is not really the case. These models can't be unbiased if they are trained using data build by humans with baises.
+
+
 ```

@@ -161,10 +161,6 @@ FROM(
 WHERE x.sale_rank = 1 
 
 
-
-
-	
-
 /* SECTION 3 */
 
 -- Cross Join
@@ -178,7 +174,27 @@ Think a bit about the row counts: how many distinct vendors, product names are t
 How many customers are there (y). 
 Before your final group by you should have the product of those two queries (x*y).  */
 
+DROP TABLE IF EXISTS temp.five_times_product;
+CREATE TEMP TABLE IF NOT EXISTS temp.five_times_product AS
 
+SELECT DISTINCT vendor_name
+, product_name
+, original_price * 5 AS five_times_price
+FROM vendor_inventory vi
+INNER JOIN product p
+	ON p.product_id = vi.product_id
+INNER JOIN vendor v
+	ON v.vendor_id = vi.vendor_id;
+
+
+SELECT 
+vendor_name
+,product_name
+,sum(five_times_price) as final_price
+FROM ( SELECT *
+	FROM five_times_product
+	CROSS JOIN customer)
+GROUP BY vendor_name, product_name;
 
 -- INSERT
 /*1.  Create a new table "product_units". 
@@ -186,18 +202,27 @@ This table will contain only products where the `product_qty_type = 'unit'`.
 It should use all of the columns from the product table, as well as a new column for the `CURRENT_TIMESTAMP`.  
 Name the timestamp column `snapshot_timestamp`. */
 
+DROP TABLE IF EXISTS temp.product_units;
+CREATE TEMP TABLE product_units AS
+	SELECT *
+	,CURRENT_TIMESTAMP AS snapshot_timestamp
+	FROM product
+	WHERE product_qty_type = 'unit';
 
 
 /*2. Using `INSERT`, add a new row to the product_units table (with an updated timestamp). 
 This can be any product you desire (e.g. add another record for Apple Pie). */
 
-
+INSERT INTO product_units
+VALUES(222, 'Apple Pie', '12"', '11', 'unit', CURRENT_TIMESTAMP);
 
 -- DELETE
 /* 1. Delete the older record for the whatever product you added. 
 
 HINT: If you don't specify a WHERE clause, you are going to have a bad time.*/
 
+DELETE FROM product_units
+WHERE product_id=222; 
 
 
 -- UPDATE
@@ -216,6 +241,46 @@ Third, SET current_quantity = (...your select statement...), remembering that WH
 Finally, make sure you have a WHERE statement to update the right row, 
 	you'll need to use product_units.product_id to refer to the correct row within the product_units table. 
 When you have all of these components, you can run the update statement. */
+
+SELECT *
+FROM product_units;
+
+DROP TABLE IF EXISTS temp.last_quantity;
+
+-- create temp table to find all the last quantity values
+CREATE TEMP TABLE last_quantity AS
+SELECT *
+FROM (
+	SELECT DISTINCT product_id
+	, quantity
+	, DENSE_RANK() OVER (PARTITION BY product_id ORDER BY market_date DESC) AS last_qty
+	FROM vendor_inventory) x
+WHERE x.last_qty = 1;
+
+SELECT *
+FROM last_quantity;
+
+-- used the join the see where the NULL values are
+SELECT *
+FROM product_units p
+LEFT JOIN last_quantity lq
+	ON p.product_id = lq.product_id;
+
+
+ALTER TABLE product_units
+ADD current_quantity  INT;
+
+ 
+UPDATE product_units AS p
+SET current_quantity = COALESCE(( -- using COALESCE to turn null values to 0
+		SELECT quantity
+		FROM last_quantity AS lq
+		WHERE lq.product_id = p.product_id 
+), 0);
+
+SELECT * FROM product_units
+
+
 
 
 
