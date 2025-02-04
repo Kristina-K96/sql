@@ -45,16 +45,25 @@ There are several tools online you can use, I'd recommend [Draw.io](https://www.
 
 **HINT:** You do not need to create any data for this prompt. This is a conceptual model only. 
 
+My Response:
+<img src="./A2_Prompt1.jpeg" width="900">
+
 #### Prompt 2
 We want to create employee shifts, splitting up the day into morning and evening. Add this to the ERD.
+
+My Response:
+<img src="./A2_Prompt2.jpeg" width="900">
 
 #### Prompt 3
 The store wants to keep customer addresses. Propose two architectures for the CUSTOMER_ADDRESS table, one that will retain changes, and another that will overwrite. Which is type 1, which is type 2? 
 
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
+My Response:
+
+<img src="./A2_Prompt3.jpeg" width="900">
 ```
-Your answer...
+In both version of the CUSTOMER_ADDRESS table, there would be a column for the customer_loyalty_id and customer_addresses. In a type 1 table, when the customer's new address is added it will overwrite the previous address for the cutsomer - keeping the relationship between the customer and customer_address table as a 1 to 1 relationship. In a type 2 table, the new customer address is added as a new row, as well as a column to identify whether the address is the current address or not. In the type 2 table, the relationship between the customer and customer_address table would be a 1 to Many relationship.
 ```
 
 ***
@@ -183,4 +192,6 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 ```
 Your thoughts...
+
+This article emphasizes that all AI systems are built on human labor. The datasets used to train AI models often reflect the biases of the humans who label them, and these biases are then embedded in the models themselves. Many people assume that AI, neural networks, or large language models (LLMs) make decisions more objectively than humans, but this is not necessarily true. Since these models learn from human-generated data, they inevitably inherit human biases. These inherited biases can also be mangnified by the AI, like example of the ImageNet Roulette project, and have major implications for how decisions are made in our society. Overall, this article highlights the importantance of recognizing the potential biases in training data—shaped by human decisions,and that we must actively work to reduce them because they have real-world impacts on our communities.
 ```
