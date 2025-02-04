@@ -63,7 +63,7 @@ My Response:
 
 <img src="./A2_Prompt3.jpeg" width="900">
 ```
-In both version of the CUSTOMER_ADDRESS table, there would be a column for the customer_loyalty_id and customer_addresses. In a type 1 table, when the customer's new address is added it will overwrite the previous address for the cutsomer - keeping the relationship between the customer and customer_address table as a 1 to 1 relationship. In a type 2 table, the new customer address is added as a new row. In the type 2 table, the relationship between the customer and customer_address table would be a 1 to Many relationship.
+In both version of the CUSTOMER_ADDRESS table, there would be a column for the customer_loyalty_id and customer_addresses. In a type 1 table, when the customer's new address is added it will overwrite the previous address for the cutsomer - keeping the relationship between the customer and customer_address table as a 1 to 1 relationship. In a type 2 table, the new customer address is added as a new row, as well as a column to identify whether the address is the current address or not. In the type 2 table, the relationship between the customer and customer_address table would be a 1 to Many relationship.
 ```
 
 ***

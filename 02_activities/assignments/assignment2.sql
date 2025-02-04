@@ -222,7 +222,7 @@ VALUES(222, 'Apple Pie', '12"', '11', 'unit', CURRENT_TIMESTAMP);
 HINT: If you don't specify a WHERE clause, you are going to have a bad time.*/
 
 DELETE FROM product_units
-WHERE product_id=222; 
+WHERE product_id=222, snapshot_timestamp=CURRENT_TIMESTAMP; 
 
 
 -- UPDATE
